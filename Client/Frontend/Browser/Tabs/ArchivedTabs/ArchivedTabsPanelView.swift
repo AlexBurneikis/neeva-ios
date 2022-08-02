@@ -44,7 +44,7 @@ struct ArchivedTabsPanelView: View {
         HStack(spacing: 0) {
             Text("Clear All Archived Tabs")
                 .withFont(.bodyLarge)
-                .foregroundColor(.red)
+                .foregroundColor(model.numOfArchivedTabs < 1 ? .gray : .red)
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.vertical, 10)
             Spacer()
@@ -124,6 +124,7 @@ struct ArchivedTabsPanelView: View {
                             }
                     }
                 }
+                    .disabled(model.numOfArchivedTabs < 1)
 
                 NavigationLink(isActive: $showArchivedTabsSettings) {
                     ArchivedTabSettings()
